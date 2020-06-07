@@ -1,8 +1,8 @@
 <template>
-  <div class="node" @click="style='background:cyan'">
-      <svg height="50" width="auto">
-        <circle cx="32" cy="32" r="18" fill="rgb(102, 156, 202)"/>
-      </svg>
+  <div class="node" @click="style = 'background:cyan'">
+    <svg height="50" width="auto">
+      <circle cx="32" cy="32" r="18" fill="rgb(102, 156, 202)" />
+    </svg>
   </div>
 </template>
 
@@ -10,10 +10,7 @@
 //TODO: add onmousedown function to capture mouse position and get the current node.
 export default {
   name: "node",
-  methods: {
-
-  },
-}
+};
 </script>
 
 <style>

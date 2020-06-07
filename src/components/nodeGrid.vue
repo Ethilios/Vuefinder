@@ -1,20 +1,21 @@
 <template>
   <div class="nodegrid">
-     <div v-for="x in 338" :key="x"> <!-- TODO: Need to find a way to calculate it to be a full last row -->
-        <node></node>
-     </div>
+    <div v-for="x in 338" :key="x">
+      <!-- TODO: Need to find a way to calculate it to be a full last row -->
+      <node></node>
+    </div>
   </div>
 </template>
 
 <script>
-import node from '@/components/node.vue';
+import node from "@/components/node.vue";
 
 export default {
-    name: "nodeGrid",
-    components: {
-        node
-    }
-  }
+  name: "nodeGrid",
+  components: {
+    node,
+  },
+};
 </script>
 
 <style>
@@ -25,7 +26,7 @@ export default {
 }
 
 .nodegrid::before {
-  content: '';
+  content: "";
   width: 0;
   padding-bottom: 100%;
   grid-row: 1 / 1;
@@ -43,7 +44,4 @@ export default {
   border: 1px white solid;
   background: #3c98a0;
 }
-
-
-
 </style>
