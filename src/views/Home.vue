@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 @click="testfn">VueFinder</h1>
+    <h1>VueFinder</h1>
     <div class="grid-container">
       <nodeGrid></nodeGrid>
     </div>
@@ -9,7 +9,7 @@
 
 <script>
 // @ is an alias to /src
-import nodeGrid from '@/components/nodeGrid.vue';
+import nodeGrid from "@/components/nodeGrid.vue";
 
 export default {
   name: "Home",
@@ -17,8 +17,9 @@ export default {
     nodeGrid
   },
   methods: {
-    testfn: function() {
-      document.getElementsByTagName("h1").style.color = "green";
+    addOne: function() {
+      this.$store.commit("increment");
+      console.log(this.$store.state.count);
     }
   }
 };
@@ -33,7 +34,7 @@ h1 {
 }
 
 .grid-container {
-  border-radius: 15px;  /* TODO: Make this work */
+  border-radius: 15px; /* TODO: Make this work */
   margin: 2% 5%;
 }
 </style>

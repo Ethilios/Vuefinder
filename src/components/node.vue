@@ -1,7 +1,8 @@
 <template>
   <div class="node" @click="style = 'background:cyan'">
-    <svg height="50" width="auto">
-      <circle cx="32" cy="32" r="18" fill="rgb(102, 156, 202)" />
+    <svg height="65px" width="65px">
+      <circle cx="32.5" cy="32.5" r="18" fill="rgb(102, 156, 202)" />
+      <text x="20" y="37">{{ row }}:{{ col }}</text>
     </svg>
   </div>
 </template>
@@ -10,29 +11,16 @@
 //TODO: add onmousedown function to capture mouse position and get the current node.
 export default {
   name: "node",
+  props: {
+    row: Number,
+    col: Number
+  }
 };
 </script>
 
 <style>
-.node {
-  text-align: center;
-  height: 100%;
-  cursor: pointer;
-}
-
-.node:hover {
-  animation-name: mouseOver;
-  animation-duration: 0.6s;
-  animation-timing-function: ease-out;
-  background: #a7ff83;
-}
-
-@keyframes mouseOver {
-  from {
-    background-color: #17b978;
-  }
-  to {
-    background-color: #a7ff83;
-  }
+svg {
+  display: block;
+  margin: auto;
 }
 </style>

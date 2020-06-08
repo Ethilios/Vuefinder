@@ -1,8 +1,9 @@
 <template>
   <div class="nodegrid">
-    <div v-for="x in 338" :key="x">
-      <!-- TODO: Need to find a way to calculate it to be a full last row -->
-      <node></node>
+    <div class="cols" v-for="y in 26" :key="y">
+      <div class="rows" v-for="x in 12" :key="x">
+        <node class="node" :row="x" :col="y"></node>
+      </div>
     </div>
   </div>
 </template>
@@ -13,8 +14,8 @@ import node from "@/components/node.vue";
 export default {
   name: "nodeGrid",
   components: {
-    node,
-  },
+    node
+  }
 };
 </script>
 
@@ -41,7 +42,33 @@ export default {
 /* Just to make the grid visible */
 
 .nodegrid > * {
-  border: 1px white solid;
   background: #3c98a0;
+}
+
+.rows {
+  height: 65px;
+  width: 65px;
+}
+
+.node {
+  cursor: pointer;
+  display: block;
+  margin: auto;
+}
+
+.node:hover {
+  animation-name: mouseOver;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  background: #a7ff83;
+}
+
+@keyframes mouseOver {
+  from {
+    background-color: #17b978;
+  }
+  to {
+    background-color: #a7ff83;
+  }
 }
 </style>
