@@ -56,7 +56,7 @@ export default {
   margin: auto;
 }
 
-.node:hover {
+/* .node:hover {
   animation-name: mouseOver;
   animation-duration: 0.6s;
   animation-timing-function: ease-out;
@@ -70,5 +70,5 @@ export default {
   to {
     background-color: #a7ff83;
   }
-}
+} */
 </style>
