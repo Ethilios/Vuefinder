@@ -49,26 +49,4 @@ export default {
   height: 65px;
   width: 65px;
 }
-
-.node {
-  cursor: pointer;
-  display: block;
-  margin: auto;
-}
-
-/* .node:hover {
-  animation-name: mouseOver;
-  animation-duration: 0.6s;
-  animation-timing-function: ease-out;
-  background: #a7ff83;
-}
-
-@keyframes mouseOver {
-  from {
-    background-color: #17b978;
-  }
-  to {
-    background-color: #a7ff83;
-  }
-} */
 </style>
