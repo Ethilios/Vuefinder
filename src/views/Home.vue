@@ -1,8 +1,12 @@
 <template>
   <div class="home">
-    <h1>VueFinder</h1>
+    <div class="top-bar">
+      <h1>VueFinder</h1>
+      <button class="menu-button">START</button>
+      <button class="menu-button" @click="clearGrid()">CLEAR</button>
+    </div>
     <div class="grid-container">
-      <nodeGrid></nodeGrid>
+      <nodeGrid :key="gridKey"></nodeGrid>
     </div>
   </div>
 </template>
@@ -16,25 +20,67 @@ export default {
   components: {
     nodeGrid
   },
+  data() {
+    return {
+      gridKey: 0
+    };
+  },
   methods: {
-    addOne: function() {
-      this.$store.commit("increment");
-      console.log(this.$store.state.count);
+    clearGrid() {
+      this.gridKey += 1;
     }
   }
 };
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Muli:wght@600&display=swap");
+
+.top-bar {
+  margin: 0 30%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 h1 {
-  margin-left: 40vw;
+  display: flex;
+  flex: content;
+  justify-content: center;
   color: aliceblue;
-  margin-bottom: 0;
   cursor: pointer;
+  order: 2;
+}
+
+.menu-button {
+  /* Positioning */
+  flex-basis: 10%;
+  box-sizing: border-box;
+  padding: auto 0;
+  /* Appearance */
+  border: none;
+  border-radius: 10px;
+  background: rgb(45, 45, 184);
+  color: aliceblue;
+  font-size: medium;
+  font-weight: 600;
+  font-family: "Muli", sans-serif;
+  cursor: pointer;
+}
+
+.menu-button:nth-child(1) {
+  order: 1;
+}
+.menu-button:nth-child(3) {
+  order: 2;
+}
+
+.menu-button:hover {
+  background: rgb(8, 173, 173);
 }
 
 .grid-container {
   border-radius: 15px; /* TODO: Make this work */
-  margin: 2% 5%;
+  margin: 1% 5% 1% 5%;
 }
 </style>

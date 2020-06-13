@@ -1,14 +1,17 @@
 <template>
-  <div :class="[isWall ? 'wall' : 'node']" @mouseover="mouseOver()" @click="handleClick()">
+  <div
+    :class="[isWall ? 'wall' : [isStart ? 'start' : [isTarget ? 'target' : 'node']]]"
+    @click="handleClick()"
+  >
     <svg height="65px" width="65px">
-      <circle cx="32.5" cy="32.5" r="18" fill="rgb(102, 156, 202)" />
-      <text x="20" y="37">{{ row }}:{{ col }}</text>
+      <circle cx="32.5" cy="32.5" r="18" :fill="circleColour" @click.stop="changeCircle()" />
+      <!-- <text x="20" y="37">{{ row }}:{{ col }}</text>  @click="handleClick()" -->
     </svg>
   </div>
 </template>
 
 <script>
-//TODO: add onmousedown function to capture mouse position and get the current node.
+//TODO: add onmousedown function to capture mouse position and get the current node. rgb(102, 156, 202)
 export default {
   name: "node",
   props: {
@@ -17,44 +20,46 @@ export default {
   },
   data() {
     return {
-      hovering: false,
-      clicked: false,
-      isWall: false,
       startRow: this.$store.state.START_NODE_ROW,
       startCol: this.$store.state.START_NODE_COL,
       targetRow: this.$store.state.TARGET_NODE_ROW,
-      targetCol: this.$store.state.TARGET_NODE_COL
+      targetCol: this.$store.state.TARGET_NODE_COL,
+      isWall: false,
+      isStart: false,
+      isTarget: false,
+      circleColour: "rgb(102, 156, 202)"
     };
   },
   methods: {
-    mouseOver() {
-      if (this.row == this.startRow && this.col == this.startCol) {
-        alert("You found the Start node!");
-      } else if (
-        this.row == this.$store.state.TARGET_NODE_ROW &&
-        this.col == this.$store.state.TARGET_NODE_COL
-      ) {
-        alert("You found the TARGET node!");
-      } else {
-        console.log("Hovering over: " + this.row + ":" + this.col);
-      }
-    },
     handleClick() {
       this.isWall = !this.isWall;
-      // this.clicked = !this.clicked;
-      // if (this.clicked) {
-      //   this.isWall = true;
-      // }
+    },
+    markStartTarget() {
+      if (this.row == this.startRow && this.col == this.startCol) {
+        this.isStart = true;
+      } else if (this.row == this.targetRow && this.col == this.targetCol) {
+        this.isTarget = true;
+      }
+    },
+    changeCircle() {
+      this.circleColour = "#fff";
     }
+  },
+  mounted() {
+    this.markStartTarget();
   }
-  // computed: {
-  //   markStart() {
-  //     if () {
-
+  // Add computed to mark Start and Target
+  // methods: {
+  //   moving() {
+  //     if (this.captureToggle) {
+  //       this.isWall = !this.isWall;
   //     }
   //   },
-  //   markTarget() {
-
+  //   captureOn() {
+  //     this.captureToggle = true;
+  //   },
+  //   captureOff() {
+  //     this.captureToggle = false;
   //   }
   // }
 };
@@ -76,10 +81,24 @@ svg {
   cursor: pointer;
   display: block;
   margin: auto;
-  background: magenta;
+  background: rgb(87, 14, 221);
 }
 
-/* .node:hover {
+.start {
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  background: rgb(45, 45, 184);
+}
+
+.target {
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  background: cyan;
+}
+
+.node:hover {
   animation-name: mouseOver;
   animation-duration: 0.6s;
   animation-timing-function: ease-out;
@@ -93,5 +112,5 @@ svg {
   to {
     background-color: #a7ff83;
   }
-} */
+}
 </style>

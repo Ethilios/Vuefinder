@@ -1,7 +1,7 @@
 <template>
   <div class="nodegrid">
     <div class="cols" v-for="y in 26" :key="y">
-      <div class="rows" v-for="x in 12" :key="x">
+      <div class="rows" v-for="x in 13" :key="x">
         <node class="node" :row="x" :col="y"></node>
       </div>
     </div>
