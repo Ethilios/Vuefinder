@@ -2,7 +2,16 @@
   <div class="nodegrid">
     <div class="cols" v-for="y in 26" :key="y">
       <div class="rows" v-for="x in 13" :key="x">
-        <node class="node" :row="x" :col="y"></node>
+        <node
+          class="node"
+          :row="x"
+          :col="y"
+          :visited="false"
+          :isStart="isStart(x,y)"
+          :isTarget="isTarget(x,y)"
+          distance="10000"
+          parentNode="null"
+        ></node>
       </div>
     </div>
   </div>
@@ -15,6 +24,26 @@ export default {
   name: "nodeGrid",
   components: {
     node
+  },
+  data() {
+    return {
+      startRow: this.$store.state.START_NODE_ROW,
+      startCol: this.$store.state.START_NODE_COL,
+      targetRow: this.$store.state.TARGET_NODE_ROW,
+      targetCol: this.$store.state.TARGET_NODE_COL
+    };
+  },
+  methods: {
+    isStart(nodeX, nodeY) {
+      if (nodeX == this.startRow && nodeY == this.startCol) {
+        return true;
+      }
+    },
+    isTarget(nodeX, nodeY) {
+      if (nodeX == this.targetRow && nodeY == this.targetCol) {
+        return true;
+      }
+    }
   }
 };
 </script>

@@ -1,11 +1,16 @@
 <template>
   <div
-    :class="[isWall ? 'wall' : [isStart ? 'start' : [isTarget ? 'target' : 'node']]]"
+    :class="[isWall ? 'wall' : [this.isStart ? 'start' : [this.isTarget ? 'target' : 'node']]]"
     @click="handleClick()"
   >
     <svg height="65px" width="65px">
-      <circle cx="32.5" cy="32.5" r="18" :fill="circleColour" @click.stop="changeCircle()" />
-      <!-- <text x="20" y="37">{{ row }}:{{ col }}</text>  @click="handleClick()" -->
+      <circle
+        cx="32.5"
+        cy="32.5"
+        r="18"
+        :fill="[this.visited ? '#fff' : 'rgb(102, 156, 202)']"
+        @click.stop="nodeVisited()"
+      />
     </svg>
   </div>
 </template>
@@ -16,52 +21,24 @@ export default {
   name: "node",
   props: {
     row: Number,
-    col: Number
+    col: Number,
+    isStart: String,
+    isTarget: String,
+    visited: Boolean
   },
   data() {
     return {
-      startRow: this.$store.state.START_NODE_ROW,
-      startCol: this.$store.state.START_NODE_COL,
-      targetRow: this.$store.state.TARGET_NODE_ROW,
-      targetCol: this.$store.state.TARGET_NODE_COL,
-      isWall: false,
-      isStart: false,
-      isTarget: false,
-      circleColour: "rgb(102, 156, 202)"
+      isWall: false
     };
   },
   methods: {
+    nodeVisited() {
+      this.visited = true;
+    },
     handleClick() {
       this.isWall = !this.isWall;
-    },
-    markStartTarget() {
-      if (this.row == this.startRow && this.col == this.startCol) {
-        this.isStart = true;
-      } else if (this.row == this.targetRow && this.col == this.targetCol) {
-        this.isTarget = true;
-      }
-    },
-    changeCircle() {
-      this.circleColour = "#fff";
     }
-  },
-  mounted() {
-    this.markStartTarget();
   }
-  // Add computed to mark Start and Target
-  // methods: {
-  //   moving() {
-  //     if (this.captureToggle) {
-  //       this.isWall = !this.isWall;
-  //     }
-  //   },
-  //   captureOn() {
-  //     this.captureToggle = true;
-  //   },
-  //   captureOff() {
-  //     this.captureToggle = false;
-  //   }
-  // }
 };
 </script>
 
@@ -102,15 +79,15 @@ svg {
   animation-name: mouseOver;
   animation-duration: 0.6s;
   animation-timing-function: ease-out;
-  background: #a7ff83;
+  background: #683ae9;
 }
 
 @keyframes mouseOver {
   from {
-    background-color: #17b978;
+    background-color: #7a78e4;
   }
   to {
-    background-color: #a7ff83;
+    background-color: #683ae9;
   }
 }
 </style>

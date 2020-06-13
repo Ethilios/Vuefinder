@@ -48,7 +48,6 @@ h1 {
   flex: content;
   justify-content: center;
   color: aliceblue;
-  cursor: pointer;
   order: 2;
 }
 
