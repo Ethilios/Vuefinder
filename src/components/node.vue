@@ -8,7 +8,7 @@
         cx="32.5"
         cy="32.5"
         r="18"
-        :fill="[this.visited ? '#fff' : 'rgb(102, 156, 202)']"
+        :fill="[this.visited ? '#fff' : [this.isStart ? '#fff' : 'rgb(102, 156, 202)']]"
         @click.stop="nodeVisited()"
       />
     </svg>
@@ -52,6 +52,7 @@ svg {
   cursor: pointer;
   display: block;
   margin: auto;
+  border-radius: 5px;
 }
 
 .wall {

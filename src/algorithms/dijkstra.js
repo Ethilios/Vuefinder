@@ -22,6 +22,26 @@
 //         if newDist is less than currentNode's distance
 //             set neighbor's distance to newDist
 //             set neighbor's parent to currentNode
+
 const { forEach } = require("core-js/fn/array");
 
-forEach;
+let targetNode; // TODO: Placeholder
+let unvisitedNodes = []; //TODO: Populate with all nodes
+
+// Find closest node until visited all nodes
+while (unvisitedNodes.length()) {
+  let closestNode = unvisitedNodes[0];
+  for (let i = 1; i < unvisitedNodes.length; i++) {
+    let currentNode = unvisitedNodes[i];
+    if (currentNode < closestNode) {
+      closestNode = currentNode;
+    }
+    // Remove current node from unvisited set
+    unvisitedNodes.splice(i, 1);
+  }
+  // Target Found
+  if (currentNode == targetNode) {
+    // Add backtrack
+  }
+  // Get unvisited neighbours of current node
+}

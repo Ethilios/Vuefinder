@@ -1,7 +1,7 @@
 <template>
   <div class="nodegrid">
-    <div class="cols" v-for="y in 26" :key="y">
-      <div class="rows" v-for="x in 13" :key="x">
+    <div class="cols" v-for="y in numCols" :key="y">
+      <div class="rows" v-for="x in numRows" :key="x">
         <node
           class="node"
           :row="x"
@@ -27,10 +27,13 @@ export default {
   },
   data() {
     return {
+      // TODO: Implement mapstate for the Vuex store states to minimise clutter
       startRow: this.$store.state.START_NODE_ROW,
       startCol: this.$store.state.START_NODE_COL,
       targetRow: this.$store.state.TARGET_NODE_ROW,
-      targetCol: this.$store.state.TARGET_NODE_COL
+      targetCol: this.$store.state.TARGET_NODE_COL,
+      numCols: this.$store.state.TOTAL_COLUMNS,
+      numRows: this.$store.state.TOTAL_ROWS
     };
   },
   methods: {
@@ -67,8 +70,6 @@ export default {
   grid-row: 1 / 1;
   grid-column: 1 / 1;
 }
-
-/* Just to make the grid visible */
 
 .nodegrid > * {
   background: #3c98a0;

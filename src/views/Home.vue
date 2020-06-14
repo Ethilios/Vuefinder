@@ -2,7 +2,7 @@
   <div class="home">
     <div class="top-bar">
       <h1>VueFinder</h1>
-      <button class="menu-button">START</button>
+      <button class="menu-button" @click="runAnimation()">START</button>
       <button class="menu-button" @click="clearGrid()">CLEAR</button>
     </div>
     <div class="grid-container">

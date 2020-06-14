@@ -8,6 +8,10 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
+    TOTAL_COLUMNS: 26,
+    TOTAL_ROWS: 13,
+    GRID: [],
+
     START_NODE_ROW: 7,
     START_NODE_COL: 5,
     TARGET_NODE_ROW: 7,
