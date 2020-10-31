@@ -6,7 +6,12 @@
       <button class="menu-button" @click="clearGrid()">CLEAR</button>
     </div>
     <div class="grid-container">
-      <nodeGrid :key="gridKey"></nodeGrid>
+      <!-- <nodeGrid :key="gridKey"></nodeGrid> -->
+      <testNode
+        row= 3,
+        col= 5,
+        visited= Boolean
+      ></testNode>
     </div>
   </div>
 </template>
@@ -14,11 +19,13 @@
 <script>
 // @ is an alias to /src
 import nodeGrid from "@/components/nodeGrid.vue";
+import testNode from "@/components/testNode.vue";
 
 export default {
   name: "Home",
   components: {
-    nodeGrid
+    //nodeGrid
+    testNode
   },
   data() {
     return {

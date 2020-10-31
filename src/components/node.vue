@@ -3,6 +3,9 @@
     :class="[isWall ? 'wall' : [this.isStart ? 'start' : [this.isTarget ? 'target' : 'node']]]"
     @click="handleClick()"
   >
+  <span class="overlay">10</span>
+  <span class="overlay top--right">14</span>
+  <span class="node--circle">
     <svg height="65px" width="65px">
       <circle
         cx="32.5"
@@ -12,6 +15,7 @@
         @click.stop="nodeVisited()"
       />
     </svg>
+  </span>
   </div>
 </template>
 
@@ -49,6 +53,7 @@ svg {
 }
 
 .node {
+  position: relative;
   cursor: pointer;
   display: block;
   margin: auto;
@@ -56,6 +61,7 @@ svg {
 }
 
 .wall {
+  position: relative;
   cursor: pointer;
   display: block;
   margin: auto;
@@ -63,6 +69,7 @@ svg {
 }
 
 .start {
+  position: relative;
   cursor: pointer;
   display: block;
   margin: auto;
@@ -70,6 +77,7 @@ svg {
 }
 
 .target {
+  position: relative;
   cursor: pointer;
   display: block;
   margin: auto;
@@ -81,6 +89,22 @@ svg {
   animation-duration: 0.6s;
   animation-timing-function: ease-out;
   background: #683ae9;
+}
+
+.overlay {
+  position: relative;
+  z-index: 3;
+}
+
+.top--right {
+  position: relative;
+  padding-left:25%;
+  z-index: 3;
+}
+
+.node--circle {
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes mouseOver {
